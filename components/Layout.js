@@ -4,11 +4,13 @@ import styled from 'styled-components'
 import Link from 'next/link'
 
 const Links = [
-  { name: 'Home', url: '/' },
+  { name: '课程介绍', url: '/' },
+  { name: '学员心得', url: '/' },
+  { name: '编程比赛', url: '/' },
 ]
 
 const Background = styled.div`
-background:black;
+background:#3d3d3d;
 height:100vh;
 width:100vw;
 overflow:auto;
@@ -56,7 +58,7 @@ justify-content:flex-end;
 height:100%;
 `
 const Header = styled.div`
-background:rgba(6,9,14,0.95);
+background:rgba(6,9,14,0.9);
 width:100vw;
 height:70px;
 display:flex;
@@ -105,8 +107,8 @@ const Layout = ({ children }) => (
       <Link prefetch href="/">
         <LeftArea>
           <CoinGranpa />
-          <WhiteWord>COIN</WhiteWord>
-          <YellowWord>GRANDPA</YellowWord>
+          <WhiteWord>幣</WhiteWord>
+          <YellowWord>爺爺</YellowWord>
         </LeftArea>
       </Link>
       <RightArea>
