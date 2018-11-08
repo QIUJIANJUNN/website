@@ -12,20 +12,29 @@ const StyledButton = styled.div`
   align-items: center;
   justify-content: center;
   letter-spacing: 4px;
-  cursor: pointer;
-  opacity: 0.9;
-  transition: all 0.2s ease-in-out;
   font-size: 25px;
   padding: 5px;
-  &:hover {
-    opacity: 1;
-    color: #ff9a00;
-    border: solid 0.5px #ff9a00;
-  }
+  ${props => (props.isDisabled
+    ? `
+    opacity: 0.2;
+    cursor: default;
+    pointer-events: none;
+    `
+    : `
+    opacity: 0.9;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    &:hover {
+      opacity: 1;
+      color: #ff9a00;
+      border: solid 0.5px #ff9a00;
+    }
+    `
+  )}
 `
 
-const Button = ({ children, ...rest }) => (
-  <StyledButton {...rest}>
+const Button = ({ children, isDisabled, ...rest }) => (
+  <StyledButton {...rest} isDisabled={isDisabled}>
     {children}
   </StyledButton>
 )
