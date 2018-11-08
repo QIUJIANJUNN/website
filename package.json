@@ -12,8 +12,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "2.351.0",
     "body-parser": "1.18.3",
     "express": "4.16.4",
+    "moment": "2.22.2",
     "next": "7.0.2",
     "node-binance-api": "0.8.5",
     "prop-types": "15.6.2",
