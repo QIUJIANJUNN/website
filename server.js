@@ -38,6 +38,19 @@ app.prepare().then(() => {
     return res.json(postResponse({ error: 'email needed' }))
   })
 
+  server.get('/api/passions/count', (req, res) => awsDocClient
+    .put({ Item: { timestamp: moment().valueOf().toString() }, TableName: 'Passions', ReturnValues: 'ALL_OLD' })
+    .promise()
+    .then(() => awsDocClient
+      .scan({ TableName: 'Passions' })
+      .promise()
+      .then(response => res.json(postResponse({ data: { count: response.ScannedCount } })))))
+
+  server.get('/api/users/count', (req, res) => awsDocClient
+    .scan({ TableName: 'CoinGrandpaUsers' })
+    .promise()
+    .then(response => res.json(postResponse({ data: { count: response.ScannedCount } }))))
+
   server.get('*', (req, res) => handle(req, res))
   /* eslint-disable no-console */
   server.listen(process.env.PORT || 3000, (err) => {
