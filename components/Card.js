@@ -7,8 +7,9 @@ import {
 
 const CardWrapper = styled.div`
   width: 600px;
-  background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
+  border: 2px solid rgba(255,255,255, 0.1);
   padding: 30px;
+  margin-bottom: 5px;
   @media(max-width: 768px) {
     width: 100%;
   }
@@ -26,7 +27,6 @@ const Img = styled.img`
   width: 100%;
   margin: 10px 0;
   filter: brightness(150%);
-  border: 1px solid rgba(255,255,255, 0.1);
 `
 
 const Card = ({ title, items, images }) => (

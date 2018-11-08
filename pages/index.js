@@ -108,6 +108,7 @@ class IndexPage extends React.PureComponent {
       passionsCount: 0,
       usersCount: 0,
       email: '',
+      message: '',
       done: false,
     }
   }
@@ -131,16 +132,17 @@ class IndexPage extends React.PureComponent {
   }
 
   registerUser = () => {
-    const { email } = this.state
+    const { email, message } = this.state
     fetch('/api/users', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, message }),
     })
       .then(r => r.json())
       .then(() => {
         this.setState({
           email: '',
+          message: '',
           done: true,
         })
         this.updateInfo()
@@ -152,6 +154,7 @@ class IndexPage extends React.PureComponent {
       usersCount,
       passionsCount,
       email,
+      message,
       done,
     } = this.state
     return (
@@ -169,9 +172,6 @@ class IndexPage extends React.PureComponent {
               後端 「Solidity」＋前端 「Web3.js, React.js」
             </P>
             <Spacer />
-            <Button>
-              立刻報名
-            </Button>
           </BannerBox>
         </FullWidthBannerContainer>
         <ContainerWithMaxWidth background="#F2F2F2">
@@ -221,7 +221,7 @@ class IndexPage extends React.PureComponent {
           <CourseWrapper>
             <ContentSection>
               <H3>
-                課程大綱
+                課程大綱『籌備中』
               </H3>
             </ContentSection>
             <ContentSection>
@@ -306,6 +306,12 @@ class IndexPage extends React.PureComponent {
                 placeholder="example@gmail.com"
                 onChange={e => this.setState({ email: e.target.value })}
                 value={email}
+              />
+              <Spacer height={10} />
+              <Input
+                placeholder="whatever you like"
+                onChange={e => this.setState({ message: e.target.value })}
+                value={message}
               />
               <Spacer height={30} />
               <ContentSection>

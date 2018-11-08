@@ -31,9 +31,9 @@ app.prepare().then(() => {
     const { body } = req
     if (body.email) {
       return awsDocClient
-        .put({ Item: { email: body.email }, TableName: 'CoinGrandpaUsers', ReturnValues: 'ALL_OLD' })
+        .put({ Item: { email: body.email, message: body.message }, TableName: 'CoinGrandpaUsers', ReturnValues: 'ALL_OLD' })
         .promise()
-        .then(() => res.json(postResponse({ data: { email: body.email } })))
+        .then(() => res.json(postResponse({ data: { email: body.email, message: body.message } })))
     }
     return res.json(postResponse({ error: 'email needed' }))
   })
