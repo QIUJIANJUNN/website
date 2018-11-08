@@ -4,27 +4,29 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "NODE_ENV=development node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "next": "^7.0.2",
+    "body-parser": "1.18.3",
+    "express": "4.16.4",
+    "next": "7.0.2",
     "node-binance-api": "0.8.5",
-    "prop-types": "^15.6.2",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
-    "styled-components": "^4.0.2"
+    "prop-types": "15.6.2",
+    "react": "16.6.0",
+    "react-dom": "16.6.0",
+    "styled-components": "4.0.2"
   },
   "engines": {
     "node": "^8.10.0"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.8.0",
+    "babel-eslint": "10.0.1",
+    "eslint": "5.8.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-plugin-flowtype": "3.0.0",
     "eslint-plugin-import": "2.14.0",
