@@ -24,7 +24,7 @@ const StyledButton = styled.div`
   }
 `
 
-const Button = ({ children, ...rest}) => (
+const Button = ({ children, ...rest }) => (
   <StyledButton {...rest}>
     {children}
   </StyledButton>

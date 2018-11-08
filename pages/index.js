@@ -1,18 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
-import { H1, H2, H3, P } from '../components/Text'
+import {
+  H1, H2, H3, P,
+} from '../components/Text'
+import Input from '../components/Input'
 import Button from '../components/Button'
 import ContainerWithMaxWidth from '../components/ContainerWithMaxWidth'
 
 const Spacer = styled.div`
   width: 100%;
-  height: 100px;
+  height: ${props => (props.height ? props.height : 100)}px;
 `
 
-const ColorText = styled.div`
-  color: white;
-`
 const FullWidthBannerContainer = styled.div`
   width: 100%;
   height: 600px;
@@ -77,10 +77,22 @@ const Box = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0 10px;
 `
 
-const CircularImg = styled.img`
-  width: 50px;
+const StyledH3 = styled(H3)`
+  color: black;
+`
+
+const StyledBlackP = styled(P)`
+  color: black;
+`
+
+const EmailWrapper = styled.div`
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 `
 
 
@@ -90,63 +102,91 @@ const IndexPage = () => (
       <FullWidthBanner />
       <BannerBox>
         <H1>
-          脱胎换骨成为下一个想要的自己
+          完整、迅速開發 dApp
         </H1>
         <P>
-          七年就是一辈子，一年就能蜕变成能够编织自己未来旅程的全栈工程师
+          工程師來引導你。
+        </P>
+        <P>
+          後端 「Solidity」＋前端 「Web3.js, React.js」
         </P>
         <Spacer />
         <Button>
-          立刻报名
+          立刻報名
         </Button>
-        </BannerBox>
+      </BannerBox>
     </FullWidthBannerContainer>
-    <ContainerWithMaxWidth background={'#F2F2F2'}>
+    <ContainerWithMaxWidth background="#F2F2F2">
       <TitleSection>
         <StyledH2>
-          我们重新定义编程教育
+          區塊鏈「3.0」來襲
         </StyledH2>
       </TitleSection>
       <ContentSection>
         <StyledP>
-          新生大学线上全栈营由两岸知名的 Rails 教练郑伊廷、天使投资人李笑来共同主持。我们以认知心理学为基石，打破过去传统刻板的编程学习、培训途径，旨在为未来培养出一批能够快速贯通编程理念并灵活实践的全栈工程师。
+          相信你已經看不少多公司在徵『全端工程師』『dApp工程師」』，換句話說『智能合約開發經驗＋前端開發經驗』。
+          企業已經嗅到區塊鏈潛在的商機！但是不足的是...懂得『開發dApp』的工程師。
         </StyledP>
       </ContentSection>
       <SectionImage>
-        <WhySmartContractImage src="/static/why.jpg"/>
+        <WhySmartContractImage src="/static/why.jpg" />
       </SectionImage>
     </ContainerWithMaxWidth>
     <ContainerWithMaxWidth background="#FFFFFF">
       <TitleSection>
-        這格教程內你可以
+        這個教程內你可以
       </TitleSection>
       <ContentSection>
         {
           [
             {
-              img: '/static/feature1.png',
-              title: '教材简明易懂',
-              content: '专业术语太多？全英文看不懂？我们总结多年的线下教育经验编写了通俗易懂的教材，帮你降低学习门槛。',
+              key: 'easy-material',
+              title: '教材簡單易懂',
+              content: '專業術語大多？英文看完更不懂？因為那是工程師寫出來的。我們用無基礎的前提下設計教材，帮你降低學習門檻。',
             },
             {
-              img: '/static/feature1.png',
-              title: '教材简明易懂',
-              content: '专业术语太多？全英文看不懂？我们总结多年的线下教育经验编写了通俗易懂的教材，帮你降低学习门槛。',
-            },
-            {
-              img: '/static/feature1.png',
-              title: '教材简明易懂',
-              content: '专业术语太多？全英文看不懂？我们总结多年的线下教育经验编写了通俗易懂的教材，帮你降低学习门槛。',
+              key: 'do-while-learn',
+              title: '做中學習',
+              content: '你將會做出至少三個作品，而且能幫助你不只有了解怎麼做，你還會學到「HOW」「WHAT」「WHEN」',
             },
           ]
-          .map(x => (
-            <Box key={x.title}>
-              <CircularImg src={x.img}/>
-              <H3>{x.title}</H3>
-              <P>{x.content}</P>
-            </Box>
-          ))
+            .map(x => (
+              <Box key={x.key}>
+                <StyledH3>{x.title}</StyledH3>
+                <StyledBlackP>{x.content}</StyledBlackP>
+              </Box>
+            ))
         }
+      </ContentSection>
+    </ContainerWithMaxWidth>
+    <ContainerWithMaxWidth>
+      <ContentSection>
+        <EmailWrapper>
+          <ContentSection>
+            <H3>
+              課程大綱
+            </H3>
+          </ContentSection>
+          <ContentSection>
+            ．．．
+          </ContentSection>
+        </EmailWrapper>
+      </ContentSection>
+    </ContainerWithMaxWidth>
+    <ContainerWithMaxWidth>
+      <ContentSection>
+        <EmailWrapper>
+          <ContentSection>
+            <H3>
+              已有 50 人表示有興趣，10 人報名
+            </H3>
+          </ContentSection>
+          <Input placeholder="example@gmail.com" />
+          <Spacer height={30} />
+          <ContentSection>
+            <Button>立刻報名</Button>
+          </ContentSection>
+        </EmailWrapper>
       </ContentSection>
     </ContainerWithMaxWidth>
   </Layout>
