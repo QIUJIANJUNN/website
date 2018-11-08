@@ -26,6 +26,10 @@ const PlacerHolderBlock = styled.div`
 const Block = styled.div`
   width: 800px;
   padding: 80px 0;
+  @media(max-width: 768px) {
+    width: calc(100% - 30px);
+    padding: 15px;
+  }
 `
 
 const ContainerWithMaxWidth = props => (

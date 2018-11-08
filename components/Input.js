@@ -6,6 +6,9 @@ const StyledTextWrapper = styled.div`
   display: flex;
   align-items: flex-end;
   opacity: ${props => (props.isDisabled ? 0.4 : 1)};
+  @media(max-width: 768px) {
+    width: 100%;
+  }
 `
 
 const StyledInput = styled.input`

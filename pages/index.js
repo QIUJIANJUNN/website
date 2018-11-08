@@ -73,6 +73,9 @@ const SectionImage = styled.div`
 
 const WhySmartContractImage = styled.img`
   width: 500px;
+  @media(max-width: 768px) {
+    width: 100%;
+  }
 `
 
 const Box = styled.div`
@@ -163,13 +166,17 @@ class IndexPage extends React.PureComponent {
           <FullWidthBanner />
           <BannerBox>
             <H1>
-              完整、迅速開發 dApp
+              完整、迅速開發
+              {'\n'}
+              dApp
             </H1>
             <P>
               工程師來引導你。
             </P>
             <P>
-              後端 「Solidity」＋前端 「Web3.js, React.js」
+              後端『Solidity』
+              {'\n'}
+              前端『Web3.js, React.js』
             </P>
             <Spacer />
           </BannerBox>

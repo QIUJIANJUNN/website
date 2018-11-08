@@ -68,6 +68,9 @@ const TypingWrapper = styled.div`
   display: flex;
   align-items: flex-end;
   margin-left: 5px;
+  @media(max-width: 768px) {
+    width: auto;
+  }
 `
 
 const TypingText = styled.div`
