@@ -139,7 +139,11 @@ class IndexPage extends React.PureComponent {
     fetch('/api/users', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, message }),
+      body: JSON.stringify(Object.assign(
+        {},
+        { email },
+        message || {},
+      )),
     })
       .then(r => r.json())
       .then(() => {
@@ -189,8 +193,8 @@ class IndexPage extends React.PureComponent {
           </TitleSection>
           <ContentSection>
             <StyledP>
-              相信你已經看不少多公司在徵『全端工程師』『dApp工程師」』，換句話說『智能合約開發經驗＋前端開發經驗』。
-              企業已經嗅到區塊鏈潛在的商機！但是不足的是...懂得『開發dApp』的工程師。
+              相信你已經看不少多公司在徵『全端工程師』『dApp工程師』，換句話說『智能合約開發經驗＋前端開發經驗』。
+              企業已經嗅到區塊鏈潛在的商機！但是不足的是...懂得『開發dApp』的工程師？
             </StyledP>
           </ContentSection>
           <SectionImage>
