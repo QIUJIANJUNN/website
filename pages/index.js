@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import fetch from 'node-fetch'
 import emailValidator from 'email-validator'
+import Profile from '../components/Profile'
 import Layout from '../components/Layout'
 import Card from '../components/Card'
 import {
@@ -53,6 +54,8 @@ const TitleSection = styled.div`
 
 const StyledP = styled(P)`
   color: #666666;
+  white-space: pre-line;
+  text-align: center;
 `
 
 const StyledH2 = styled(H2)`
@@ -64,6 +67,7 @@ const ContentSection = styled.div`
   display: flex;
   align-items: stretch;
   justify-content: center;
+  flex-wrap: wrap;
 `
 const SectionImage = styled.div`
   margin-top: 80px;
@@ -79,11 +83,18 @@ const WhySmartContractImage = styled.img`
 `
 
 const Box = styled.div`
+  align-self: flex-start;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 0 10px;
+  @media(max-width: 768px) {
+    width: 100%;
+    flex: none;
+    margin-bottom: 40px;
+  }
 `
 
 const StyledH3 = styled(H3)`
@@ -111,6 +122,7 @@ class IndexPage extends React.PureComponent {
       passionsCount: 0,
       usersCount: 0,
       email: '',
+      name: '',
       message: '',
       done: false,
     }
@@ -135,13 +147,14 @@ class IndexPage extends React.PureComponent {
   }
 
   registerUser = () => {
-    const { email, message } = this.state
+    const { email, message, name } = this.state
     fetch('/api/users', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(Object.assign(
         {},
         { email },
+        { name },
         message || {},
       )),
     })
@@ -150,6 +163,7 @@ class IndexPage extends React.PureComponent {
         this.setState({
           email: '',
           message: '',
+          name: '',
           done: true,
         })
         this.updateInfo()
@@ -163,6 +177,7 @@ class IndexPage extends React.PureComponent {
       email,
       message,
       done,
+      name,
     } = this.state
     return (
       <Layout>
@@ -193,8 +208,12 @@ class IndexPage extends React.PureComponent {
           </TitleSection>
           <ContentSection>
             <StyledP>
-              相信你已經看不少多公司在徵『全端工程師』『dApp工程師』，換句話說『智能合約開發經驗＋前端開發經驗』。
-              企業已經嗅到區塊鏈潛在的商機！但是不足的是...懂得『開發dApp』的工程師？
+              有智慧的『你/妳』是不是已注意到不少企業早已開始投入不少資源在了解『區塊鏈/虛擬貨幣』，更近一步的，企業早開始悄悄的孵化自己的『dApp』。
+              {'\n'}
+              {'\n'}
+              想知道怎麼實作一個『dApp』？
+              {'\n'}
+              想知道怎麼快速開發『dApp』？
             </StyledP>
           </ContentSection>
           <SectionImage>
@@ -210,92 +229,124 @@ class IndexPage extends React.PureComponent {
           [
             {
               key: 'easy-material',
-              title: '教材簡單易懂',
-              content: '專業術語大多？英文看完更不懂？因為那是工程師寫出來的。我們用無基礎的前提下設計教材，帮你降低學習門檻。',
+              title: '簡單易懂',
+              content: '專業術語大多？看完更覺得更加不懂？因為那是工程師寫出來的。我們用無基礎的前提下設計教材，幫你降低學習門檻。',
             },
             {
               key: 'do-while-learn',
               title: '做中學習',
-              content: '你將會做出至少三個作品，而且能幫助你不只有了解怎麼做，你還會學到「HOW」「WHAT」「WHEN」',
+              content: '『你/妳』將會做出至少三個作品，在邊學邊做的過程中更深入的了解每一行程式碼背後的含義，幫助你之後可以舉一反三。',
             },
           ]
             .map(x => (
               <Box key={x.key}>
-                <StyledH3>{x.title}</StyledH3>
+                <StyledH3>
+                『
+                  {x.title}
+                』
+                </StyledH3>
                 <StyledBlackP>{x.content}</StyledBlackP>
               </Box>
             ))
         }
           </ContentSection>
         </ContainerWithMaxWidth>
+        <ContainerWithMaxWidth background="#F2F2F2">
+          <TitleSection>
+            <StyledH2>
+              團隊
+            </StyledH2>
+          </TitleSection>
+          <ContentSection>
+            <Profile
+              name="小吉"
+              jobTitle="『每週50在幣圈』部落客"
+              description="四年虛擬貨幣投資經驗，並且是Medium 『每週50在幣圈』連載部落客，講述目前幣圈的概況及區塊鏈的基本技術和使用場景。目前現任虛擬貨幣礦場管理技術工程師。"
+              image="/static/gee.png"
+              socials={[
+                { icon: '/static/icon-medium.png', link: 'https://medium.com/@xiaojibc' },
+              ]}
+            />
+            <Profile
+              name="Wayne"
+              jobTitle="COBINHOOD 軟體工程師"
+              description="現任COBINHOOD虛擬貨幣交易所前端工程師。業餘愛好是在 Stackoverflow 回答問題，其目前積分大於2,000，以及Medium 『聽聽工程師怎麼說』連載部落客，講解區塊鏈技術層面及其技術的使用場景。"
+              image="/static/coingrandpa.png"
+              socials={[
+                { icon: '/static/icon-github.png', link: 'https://github.com/chaoweichiu' },
+                { icon: '/static/icon-medium.png', link: 'https://medium.com/@chaoweichiu' },
+                { icon: '/static/icon-stackoverflow.png', link: 'https://stackoverflow.com/users/6778784/wayne-chiu?tab=profile' },
+              ]}
+            />
+          </ContentSection>
+        </ContainerWithMaxWidth>
         <ContainerWithMaxWidth>
           <CourseWrapper>
-            <ContentSection>
-              <H3>
-                課程大綱『籌備中』
-              </H3>
-            </ContentSection>
-            <ContentSection>
-              <Card
-                title="後端 (Solidity)"
-                items={[
-                  '撰寫智能合約',
-                  '部署智能合約',
-                ]}
-              />
-            </ContentSection>
-            <ContentSection>
-              <Card
-                title="前端 (Web3.js, React.js, Truffle Suite)"
-                items={[
-                  '『Web3.js』與智能合約的溝通',
-                  '『Web3.js』與『React.js』',
-                  '『Truffle Suite』 幫助你開發的工具',
-                ]}
-              />
-            </ContentSection>
-            <Spacer height={50} />
-            <ContentSection>
-              <Card
-                title="『ICO』虛擬貨幣募資"
-                items={[
-                  '『ERC20 Token』智能合約開發',
-                  '『Web3』『智能合約』的溝通',
-                ]}
-                images={[
-                  '/static/ico.png',
-                ]}
-              />
-
-            </ContentSection>
-            <ContentSection>
-              <Card
-                title="『使用者註冊』"
-                items={[
-                  '使用者註冊',
-                  '簡易老鼠會智能合約',
-                ]}
-                images={[
-                  '/static/register-user-form.png',
-                  '/static/register-user-dashboard.png',
-                ]}
-              />
-            </ContentSection>
-            <ContentSection>
-              <Card
-                title="『猜數字遊戲』"
-                items={[
-                  '猜數字遊戲智能合約開發',
-                  '內涵可當遊戲莊家機制',
-                  '智能合約互相的溝通',
-                ]}
-                images={[
-                  '/static/game-setting.png',
-                  '/static/game-number-guessing.png',
-                ]}
-              />
-            </ContentSection>
-            <Spacer height={10} />
+            {
+              [
+                <H3>
+                  學習大綱
+                </H3>,
+                <Card
+                  title="後端 (Solidity)"
+                  items={[
+                    '撰寫智能合約',
+                    '部署智能合約',
+                  ]}
+                />,
+                <Card
+                  title="前端 (Web3.js, React.js, Truffle Suite)"
+                  items={[
+                    '『Web3.js』與智能合約的溝通',
+                    '『Web3.js』與『React.js』',
+                    '『Truffle Suite』 幫助你開發的工具',
+                  ]}
+                />,
+                <Spacer height={50} />,
+                <H3>
+                  課程大綱『籌備中』
+                </H3>,
+                <Card
+                  title="『ICO』虛擬貨幣募資"
+                  items={[
+                    '『ERC20 Token』智能合約開發',
+                    '『Web3』與『智能合約』溝通',
+                  ]}
+                  images={[
+                    '/static/ico.png',
+                  ]}
+                />,
+                <Card
+                  title="『使用者註冊名冊』"
+                  items={[
+                    '使用者註冊名冊',
+                    '使用者『推薦機制』',
+                    '使用者『獎勵機制』',
+                  ]}
+                  images={[
+                    '/static/register-user-form.png',
+                    '/static/register-user-dashboard.png',
+                  ]}
+                />,
+                <Card
+                  title="『猜數字遊戲』"
+                  items={[
+                    '猜數字遊戲『智能合約開發』',
+                    '可當莊家機制',
+                    '不同智能合約的相互溝通',
+                  ]}
+                  images={[
+                    '/static/game-setting.png',
+                    '/static/game-number-guessing.png',
+                  ]}
+                />,
+                <Spacer height={10} />,
+              ].map((component, index) => (
+                <ContentSection key={`${index}-content-section`}> {/* eslint-disable-line */}
+                  {component}
+                </ContentSection>
+              ))
+            }
           </CourseWrapper>
         </ContainerWithMaxWidth>
         <ContainerWithMaxWidth>
@@ -303,24 +354,28 @@ class IndexPage extends React.PureComponent {
             <EmailWrapper>
               <ContentSection>
                 <H3>
-                  已有
-                  {' '}
                   {passionsCount}
                   {' '}
                   人表示有興趣，
                   {usersCount}
                   {' '}
-                  人報名
+                  人訂閱
                 </H3>
               </ContentSection>
               <Input
-                placeholder="example@gmail.com"
+                placeholder="Mail『必填』"
                 onChange={e => this.setState({ email: e.target.value })}
                 value={email}
               />
               <Spacer height={10} />
               <Input
-                placeholder="whatever you like"
+                placeholder="姓名『必填』"
+                onChange={e => this.setState({ name: e.target.value })}
+                value={name}
+              />
+              <Spacer height={10} />
+              <Input
+                placeholder="留言板『選填』"
                 onChange={e => this.setState({ message: e.target.value })}
                 value={message}
               />
@@ -328,16 +383,16 @@ class IndexPage extends React.PureComponent {
               <ContentSection>
                 {done && (
                   <H3>
-                    已成功報名
+                    訂閱成功
                   </H3>
                 )}
               </ContentSection>
               <ContentSection>
                 <Button
                   onClick={() => this.registerUser(email)}
-                  isDisabled={!email || !emailValidator.validate(email)}
+                  isDisabled={!email || !name || !emailValidator.validate(email)}
                 >
-                  立刻報名
+                  立即訂閱
                 </Button>
               </ContentSection>
             </EmailWrapper>

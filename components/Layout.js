@@ -4,11 +4,15 @@ import styled, { keyframes } from 'styled-components'
 import Link from 'next/link'
 
 const Background = styled.div`
-background:#3d3d3d;
-height:100vh;
-width:100vw;
-overflow:auto;
-color:white;
+  background:#3d3d3d;
+  height:100vh;
+  width:100vw;
+  overflow:auto;
+  color:white;
+  @media(max-width: 768px) {
+    overflow-y: scroll; /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch;
+  }
 `
 
 const LeftArea = styled.div`
@@ -25,6 +29,9 @@ const Header = styled.div`
   width:100vw;
   height:50px;
   display:flex;
+  @media(max-width: 768px) {
+    height:55px;
+  }
 `
 const ImgWrapper = styled.div`
   display:flex;
@@ -77,6 +84,9 @@ const TypingText = styled.div`
   line-height: auto;
   width: auto;
   font-size: 12px;
+  @media(max-width: 768px) {
+    font-size: 14px;
+  }
 `
 
 const Layout = ({ children }) => (
@@ -90,7 +100,7 @@ const Layout = ({ children }) => (
             />
             <TypingWrapper>
               <TypingText>
-                GO？
+                我準備好了？
               </TypingText>
               <PipeShape />
             </TypingWrapper>

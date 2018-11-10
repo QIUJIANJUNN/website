@@ -28,12 +28,18 @@ app.prepare().then(() => {
 
   server.use(bodyParser.json())
   server.post('/api/users', (req, res) => {
-    const { body } = req
-    if (body.email) {
+    const { body: { email, name, message } } = req
+    if (email || name) {
+      const data = Object.assign(
+        {},
+        { email },
+        { name },
+        message || {},
+      )
       return awsDocClient
-        .put({ Item: { email: body.email, message: body.message }, TableName: 'CoinGrandpaUsers', ReturnValues: 'ALL_OLD' })
+        .put({ Item: data, TableName: 'CoinGrandpaUsers', ReturnValues: 'ALL_OLD' })
         .promise()
-        .then(() => res.json(postResponse({ data: { email: body.email, message: body.message } })))
+        .then(() => res.json(postResponse({ data })))
     }
     return res.json(postResponse({ error: 'email needed' }))
   })
