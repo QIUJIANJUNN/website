@@ -398,6 +398,7 @@ class IndexPage extends React.PureComponent {
             </EmailWrapper>
           </ContentSection>
         </ContainerWithMaxWidth>
+        <Spacer height={30} />
       </Layout>
     )
   }

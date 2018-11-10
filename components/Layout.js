@@ -30,7 +30,7 @@ const Header = styled.div`
   height:50px;
   display:flex;
   @media(max-width: 768px) {
-    height:55px;
+    height:50px;
   }
 `
 const ImgWrapper = styled.div`

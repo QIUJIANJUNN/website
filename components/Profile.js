@@ -5,7 +5,7 @@ import {
   H2,
   H4,
   P,
-} from '../components/Text'
+} from './Text'
 
 
 const Icon = styled.img`
