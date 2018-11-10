@@ -1,20 +1,8 @@
-## How to get started
-
-1. npm install
-2. npm run dev
-
-## Installation
-
+## now alias
+```sh
+now alias https://website-xfgqjswlnj.now.sh https://coingrandpa.com.tw/
 ```
-git fetch
-
-git checkout <brnach name>
-
-npm install
-```
-
-## Binance Node API Doc
-[link](https://github.com/binance-exchange/node-binance-api)
 
 ## Time Log
   - 1hour (Banner Section)
+  - 3hour (Add Sections + API)

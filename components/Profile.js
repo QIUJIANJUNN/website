@@ -59,14 +59,14 @@ const Spacer = styled.div`
 `
 
 const StyledH2 = styled(H2)`
-  color: rgb(18, 32, 40, 0.7);
+  color: rgba(18, 32, 40, 0.7);
 `
 const StyledH4 = styled(H4)`
-  color: rgb(18, 32, 40, 0.7);
+  color: rgba(18, 32, 40, 0.7);
   font-size: 20px;
 `
 const StyledP = styled(P)`
-  color: rgb(18, 32, 40, 0.7);
+  color: rgba(18, 32, 40, 0.7);
   white-space: pre-line;
   font-size: 16px;
 `
