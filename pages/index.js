@@ -5,8 +5,13 @@ import emailValidator from 'email-validator'
 import Profile from '../components/Profile'
 import Layout from '../components/Layout'
 import Card from '../components/Card'
+import Blockchain from '../components/BlockchainV3'
 import {
-  H1, H2, H3, P,
+  H1,
+  H2,
+  H3,
+  H4,
+  P,
 } from '../components/Text'
 import Input from '../components/Input'
 import Button from '../components/Button'
@@ -115,6 +120,30 @@ const CourseWrapper = styled.div`
   flex-direction: column;
 `
 
+const Table = styled.table`
+  width: 100%;
+  color: #666666;
+  background: rgb(206, 215, 226);
+  padding: 0 20px 20px 20px;
+  > tr > td {
+    width: 33.33%;
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid rgb(18, 32, 40);
+    padding: 10px 0;
+  }
+`
+
+const StyledLink = styled.a`
+  color: #954a97;
+  text-decoration: underline;
+`
+
+const DappImg = styled.img`
+  width: calc(100% - 6px);
+  border: 3px solid rgb(206, 215, 226);
+`
+
 class IndexPage extends React.PureComponent {
   constructor(props) {
     super(props)
@@ -124,6 +153,7 @@ class IndexPage extends React.PureComponent {
       email: '',
       name: '',
       message: '',
+      collectionLink: '',
       done: false,
     }
   }
@@ -147,7 +177,13 @@ class IndexPage extends React.PureComponent {
   }
 
   registerUser = () => {
-    const { email, message, name } = this.state
+    const {
+      email,
+      message,
+      name,
+      collectionLink,
+    } = this.state
+
     fetch('/api/users', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -155,7 +191,8 @@ class IndexPage extends React.PureComponent {
         {},
         { email },
         { name },
-        message || {},
+        message ? { message } : {},
+        collectionLink ? { collectionLink } : {},
       )),
     })
       .then(r => r.json())
@@ -164,6 +201,7 @@ class IndexPage extends React.PureComponent {
           email: '',
           message: '',
           name: '',
+          collectionLink: '',
           done: true,
         })
         this.updateInfo()
@@ -176,6 +214,7 @@ class IndexPage extends React.PureComponent {
       passionsCount,
       email,
       message,
+      collectionLink,
       done,
       name,
     } = this.state
@@ -207,9 +246,36 @@ class IndexPage extends React.PureComponent {
             </StyledH2>
           </TitleSection>
           <ContentSection>
+            <Blockchain />
+            <Table>
+              <tr>
+                <td>Bitcoin</td>
+                <td>網路</td>
+                <td>
+                  <StyledLink href="https://dexon.org/">
+                    DEXON
+                  </StyledLink>
+                </td>
+              </tr>
+              <tr>
+                <td>7 ~ 10</td>
+                <td>每秒處理</td>
+                <td>
+                  <StyledLink href="https://testnet.dexscan.org/network">
+                    {'>'}
+                    10,000
+                  </StyledLink>
+                </td>
+              </tr>
+            </Table>
+            <StyledLink href="https://medium.com/@chaoweichiu/dapp-%E6%9C%89%E6%9C%AA%E4%BE%86%E5%97%8E-%E7%8F%BE%E5%9C%A8%E6%87%89%E8%A9%B2%E8%A6%81%E5%AD%B8-%E8%81%BD%E8%81%BD%E5%B7%A5%E7%A8%8B%E5%B8%AB%E6%80%8E%E9%BA%BC%E8%AA%AA-15fc6a62fa27?fbclid=IwAR1EoSVi9LBX6_Mbm5oD8dKBUGUzkeWLx17mrDWlZdTm1HyYyIsantFPcBE">
+              <DappImg src="/static/dapp.png" />
+            </StyledLink>
             <StyledP>
-              有智慧的『你/妳』是不是已注意到不少企業早已開始投入不少資源在了解『區塊鏈/虛擬貨幣』，更近一步的，企業早開始悄悄的孵化自己的『dApp』。
-              {'\n'}
+              隨著區塊鏈技術的成熟（效率的提升），有智慧的『你/妳』是不是已注意到
+              不少企業已開始投入不少資源在孵化『dApp』
+            </StyledP>
+            <StyledP>
               {'\n'}
               想知道怎麼實作一個『dApp』？
               {'\n'}
@@ -261,7 +327,7 @@ class IndexPage extends React.PureComponent {
             <Profile
               name="小吉"
               jobTitle="『每週50在幣圈』部落客"
-              description="四年虛擬貨幣投資經驗，並且是Medium 『每週50在幣圈』連載部落客，講述目前幣圈的概況及區塊鏈的基本技術和使用場景。目前現任虛擬貨幣礦場管理技術工程師。"
+              description="現任虛擬貨幣礦場管理技術工程師。並且是Medium 『每週50在幣圈』連載部落客，講述目前幣圈的概況及區塊鏈的基本技術和使用場景。"
               image="/static/gee.png"
               socials={[
                 { icon: '/static/icon-medium.png', link: 'https://medium.com/@xiaojibc' },
@@ -375,10 +441,29 @@ class IndexPage extends React.PureComponent {
               />
               <Spacer height={10} />
               <Input
+                placeholder="作品/Github連結『想參加小班教學必填』"
+                onChange={e => this.setState({ collectionLink: e.target.value })}
+                value={collectionLink}
+              />
+              <Spacer height={10} />
+              <Input
                 placeholder="留言板『選填』"
                 onChange={e => this.setState({ message: e.target.value })}
                 value={message}
               />
+              <Spacer height={10} />
+              <ContentSection>
+                <H3>訂閱內容</H3>
+              </ContentSection>
+              <ContentSection>
+                <H4>『線上課程（籌畫中）』</H4>
+              </ContentSection>
+              <ContentSection>
+                <H4>『小班教學（有Coding經驗）』</H4>
+              </ContentSection>
+              <ContentSection>
+                <H4>『小班教學（無Coding經驗）』</H4>
+              </ContentSection>
               <Spacer height={30} />
               <ContentSection>
                 {done && (

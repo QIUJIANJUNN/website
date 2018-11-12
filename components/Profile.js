@@ -44,13 +44,13 @@ const Image = styled.img`
   width: 130px;
   height: 130px;
   border-radius: 100%;
-  border: 1px solid rgb(18, 32, 40, 0.2);
+  border: 1px solid rgba(18, 32, 40, 0.2);
 `
 
 const Line = styled.div`
   width: 100%;
   height: 1px;
-  background: rgb(18, 32, 40, 0.2);
+  background: rgba(18, 32, 40, 0.2);
 `
 
 const Spacer = styled.div`

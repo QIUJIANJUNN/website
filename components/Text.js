@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 
 export const H1 = styled.h1`
@@ -34,7 +33,7 @@ export const H3 = styled.h3`
 `
 
 export const H4 = styled.h4`
-  font-size: 26px;
+  font-size: 24px;
   letter-spacing: 3px;
   color: #FFFFFF;
   margin: 10px 0;
