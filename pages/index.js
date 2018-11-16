@@ -229,10 +229,10 @@ class IndexPage extends React.PureComponent {
               dApp
             </H1>
             <P>
-              工程師來引導你。
+              。
             </P>
             <P>
-              後端『Solidity』
+              後端
               {'\n'}
               前端『Web3.js, React.js』
             </P>
@@ -272,7 +272,7 @@ class IndexPage extends React.PureComponent {
               <DappImg src="/static/dapp.png" />
             </StyledLink>
             <StyledP>
-              隨著區塊鏈技術的成熟（效率的提升），有智慧的『你/妳』是不是已注意到
+              隨著區塊鏈技術的成熟（效率的提升），有智慧的您是不是已注意到
               不少企業已開始投入不少資源在孵化『dApp』
             </StyledP>
             <StyledP>
@@ -288,7 +288,7 @@ class IndexPage extends React.PureComponent {
         </ContainerWithMaxWidth>
         <ContainerWithMaxWidth background="#FFFFFF">
           <TitleSection>
-            這個教程內你可以
+            這個教程內您可以
           </TitleSection>
           <ContentSection>
             {
@@ -296,12 +296,12 @@ class IndexPage extends React.PureComponent {
             {
               key: 'easy-material',
               title: '簡單易懂',
-              content: '專業術語大多？看完更覺得更加不懂？因為那是工程師寫出來的。我們用無基礎的前提下設計教材，幫你降低學習門檻。',
+              content: '專業術語太多？看完只覺得更加地不懂?因為那是工程師寫出來的。我們在無需基礎知識的前提下設計教材，幫您降低學習門檻',
             },
             {
               key: 'do-while-learn',
               title: '做中學習',
-              content: '『你/妳』將會做出至少三個作品，在邊學邊做的過程中更深入的了解每一行程式碼背後的含義，幫助你之後可以舉一反三。',
+              content: '您將會做出至少三個作品 ，並在邊做邊學得過程中更深入地了解每一行程式碼背後的含義，幫助您之後可以舉一反三。',
             },
           ]
             .map(x => (
@@ -336,7 +336,7 @@ class IndexPage extends React.PureComponent {
             <Profile
               name="Wayne"
               jobTitle="COBINHOOD 軟體工程師"
-              description="現任COBINHOOD虛擬貨幣交易所前端工程師。業餘愛好是在 Stackoverflow 回答問題，其目前積分大於2,000，以及Medium 『聽聽工程師怎麼說』連載部落客，講解區塊鏈技術層面及其技術的使用場景。"
+              description="現任COBINHOOD虛擬貨幣交易所前端工程師。業餘愛好是在 Stackoverflow 回答問題，目前積分大於2,000，以及Medium 『聽聽工程師怎麼說』連載部落客，講解區塊鏈技術層面及技術的使用場景。"
               image="/static/coingrandpa.png"
               socials={[
                 { icon: '/static/icon-github.png', link: 'https://github.com/chaoweichiu' },
@@ -365,7 +365,7 @@ class IndexPage extends React.PureComponent {
                   items={[
                     '『Web3.js』與智能合約的溝通',
                     '『Web3.js』與『React.js』',
-                    '『Truffle Suite』 幫助你開發的工具',
+                    '『Truffle Suite』 幫助您開發的工具',
                   ]}
                 />,
                 <Spacer height={50} />,
