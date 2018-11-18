@@ -102,3 +102,6 @@ priceCheck2({
 })
 
 // 在 te 的‘as-MacBook-Pro:website a$ ’ 當中執行： ‘node scripts/prices.js’
+// 123
+
+//////////////////////////////test//////////////////////////////////
