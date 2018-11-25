@@ -2,7 +2,10 @@ const moment = require('moment')
 const next = require('next')
 const express = require('express')
 const bodyParser = require('body-parser')
+const graphqlHTTP = require('express-graphql')
 const AWS = require('aws-sdk')
+
+const MyGraphQLSchema = require('./lib/schema')
 
 const awsDocClient = new AWS.DynamoDB.DocumentClient({
   region: 'ap-northeast-1',
@@ -65,6 +68,11 @@ app.prepare().then(() => {
     .scan({ TableName: 'CoinGrandpaUsers' })
     .promise()
     .then(response => res.json(postResponse({ data: { count: response.ScannedCount } }))))
+
+  server.use('/graphql', graphqlHTTP({
+    schema: MyGraphQLSchema,
+    graphiql: true,
+  }))
 
   server.get('*', (req, res) => handle(req, res))
   /* eslint-disable no-console */
