@@ -14,17 +14,20 @@
   "dependencies": {
     "aws-sdk": "2.351.0",
     "body-parser": "1.18.3",
-    "email-validator": "^2.0.4",
+    "email-validator": "2.0.4",
     "express": "4.16.4",
+    "express-graphql": "0.7.1",
+    "graphql": "14.0.2",
+    "lodash": "4.17.11",
     "moment": "2.22.2",
     "next": "7.0.2",
-    "node-binance-api": "^0.8.7",
-    "node-fetch": "^2.2.1",
+    "node-binance-api": "0.8.7",
+    "node-fetch": "2.3.0",
     "prop-types": "15.6.2",
     "react": "16.6.0",
     "react-dom": "16.6.0",
     "styled-components": "4.0.2",
-    "styled-normalize": "^8.0.3"
+    "styled-normalize": "8.0.3"
   },
   "engines": {
     "node": "^8.10.0"
