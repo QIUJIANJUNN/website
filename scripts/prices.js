@@ -26,19 +26,19 @@ const customBuy1 = (args) => {
 // 2-1.先購買‘pair’和金額。
 // 2-2.購買到的數量*百分比後，在另一個pair用限價賣出。
 const customBuy2 = (args) => {
-  const { pair, amount, percentOfSell, pariOfSell } = args
+  const { pair, amount, percentOfSell, pairOfSell } = args
   binanceWithoutLogin.prices(pair, (error, ticker) => {
-    const amount = Number(amount) / Number(ticker[pair])
-    console.log('Amount:',amount)
+    const amount1 = Number(amount) / Number(ticker[pair])
+    console.log('Amount:',amount1)
     console.log('Price:',Number(ticker[pair]))
-    console.log('Pay:',Number(ticker[pair]) * amount)
-    const mathFloorAmount = Math.floor(amount*100)/100
+    console.log('Pay:',Number(ticker[pair]) * amount1)
+    const mathFloorAmount = Math.floor(amount1*100)/100
     console.log('Amount(2):',mathFloorAmount)
 
-    binance.buy(pair, mathFloorAmount, Number(ticker[pair]), (err, res) => {
-      console.log(res)
-      console.log(err)
-    })
+    // binance.buy(pair, mathFloorAmount, Number(ticker[pair]), (err, res) => {
+    //   console.log(res)
+    //   console.log(err)
+    // })
 
     // 將得到的數量 * 百分比後，取2位小數點。
     const mathFloorAmountMul = Math.floor(mathFloorAmount * percentOfSell*100)/100
@@ -46,7 +46,7 @@ const customBuy2 = (args) => {
 
     // 查詢另一個pair的最新成交價格
     binanceWithoutLogin.prices(pairOfSell, (error, ticker) => {
-      console.log("Price of",sellPair,":", ticker[pairOfSell]);
+      // console.log("Price of",sellPair,":", ticker[pairOfSell]);
       const sellPairTake6 = Math.floor(ticker[pairOfSell]*1000000)/1000000
       console.log(sellPairTake6)
 
