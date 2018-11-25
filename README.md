@@ -10,8 +10,6 @@ now alias https://website-jetryvusys.now.sh https://coingrandpa.com.tw/
   - 1hour (Wording)
 
 
-<<<<<<< Updated upstream
-=======
 //2.再次確認當前位置，是否到新到branch
 git branch
 
@@ -25,4 +23,3 @@ git checkout 'Branch名稱'
 
 // 3.將github的資料更新到本地
 git pull
->>>>>>> Stashed changes
