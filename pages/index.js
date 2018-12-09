@@ -345,6 +345,12 @@ class IndexPage extends React.PureComponent {
               ]}
             />
           </ContentSection>
+          <ContentSection>
+            <Spacer height={30} />
+            <a href="https://line.me/R/ti/p/%40tel1031f">
+              <img height="36" border="0" alt="加入好友" src="https://scdn.line-apps.com/n/line_add_friends/btn/zh-Hant.png" />
+            </a>
+          </ContentSection>
         </ContainerWithMaxWidth>
         <ContainerWithMaxWidth>
           <CourseWrapper>
@@ -428,6 +434,13 @@ class IndexPage extends React.PureComponent {
                   人訂閱
                 </H3>
               </ContentSection>
+              <ContentSection>
+                <Spacer height={30} />
+                <a href="https://line.me/R/ti/p/%40tel1031f">
+                  <img height="36" border="0" alt="加入好友" src="https://scdn.line-apps.com/n/line_add_friends/btn/zh-Hant.png" />
+                </a>
+              </ContentSection>
+              <Spacer height={30} />
               <Input
                 placeholder="Mail『必填』"
                 onChange={e => this.setState({ email: e.target.value })}
